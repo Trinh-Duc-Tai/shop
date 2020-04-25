@@ -1,0 +1,171 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container"><button
+		class="navbar-toggler"
+		type="button"
+		data-toggle="collapse"
+		data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent"
+		aria-expanded="false"
+		aria-label="Toggle navigation"
+	>
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<router-link>
+					<i
+						class="fas fa-shopping-cart"
+						style="margin-right:5px;height:25px;font-size:15px;"
+					></i
+					>Shopping Cart
+					<b>({{ numberItems }})</b>
+				</router-link>
+			</li>
+			<li class="nav-item" v-if="!user">
+				<router-link class="nav-link" :to="{name: 'Login'}">Login</router-link>
+			</li>
+			<li class="nav-item" v-if="!user">
+				<router-link class="nav-link" :to="{name: 'Signup'}">Signup</router-link>
+			</li>
+	
+			<li class="nav-item dropdown" v-if="user">
+				<a
+					class="nav-link dropdown-toggle"
+					href="#"
+					id="navbarDropdown"
+					role="button"
+					data-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false"
+					>Hey {{ user.email }}
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a @click="logout()" class="dropdown-item" href="">Logout</a>
+				</div>
+			</li>
+			<!-- het nav-item dropdown  -->
+		</ul>
+	</div>
+	<!-- het div collapse  -->
+</div>
+</nav>
+
+<button
+	class="navbar-toggler"
+	type="button"
+	data-toggle="collapse"
+	data-target="#navbarSupportedContent"
+	aria-controls="navbarSupportedContent"
+	aria-expanded="false"
+	aria-label="Toggle navigation"
+>
+	<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	<ul class="navbar-nav ml-auto">
+		<li class="nav-item">
+			<router-link>
+				<i
+					class="fas fa-shopping-cart"
+					style="margin-right:5px;height:25px;font-size:15px;"
+				></i
+				>Shopping Cart
+				<b>({{ numberItems }})</b>
+			</router-link>
+		</li>
+		<li class="nav-item" v-if="!user">
+			<router-link class="nav-link" :to="{name: 'Login'}">Login</router-link>
+		</li>
+		<li class="nav-item" v-if="!user">
+			<router-link class="nav-link" :to="{name: 'Signup'}">Signup</router-link>
+		</li>
+
+		<li class="nav-item dropdown" v-if="user">
+			<a
+				class="nav-link dropdown-toggle"
+				href="#"
+				id="navbarDropdown"
+				role="button"
+				data-toggle="dropdown"
+				aria-haspopup="true"
+				aria-expanded="false"
+				>Hey {{ user.email }}
+			</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<a @click="logout()" class="dropdown-item" href="">Logout</a>
+			</div>
+		</li>
+		<!-- het nav-item dropdown  -->
+	</ul>
+</div>
+<!-- het div collapse  -->
+
+<!-- ----------------------------------------------- -->
+<nav class="nav-wrapper light-blue accent-3">
+	<a href="#" class="brand-logo" style="font-size:15px;width:1000px">
+		<marquee behavior="alternate"
+			>Chào mừng tới Shop Now ^^ Sự hài lòng của bạn là sứ mệnh của chúng
+			tôi!!!</marquee
+		>
+	</a>
+	<!-- <a href="" class="btn-floating btn-large halfway-fab pink">
+		<router-link to="">
+			<i class="material-icons">add_shopping_cart</i>
+		</router-link>
+	</a>-->
+	<ul id="nav-mobile" class="right hide-on-med-and-down">
+		<!-- <li><router-link to=""><i class="fas fa-shopping-cart" style="margin-right:5px"></i>Shopping Cart</router-link></li> -->
+		<li>
+			<router-link to>
+				<i
+					class="fas fa-shopping-cart"
+					style="margin-right:5px;height:25px;font-size:15px;"
+				></i
+				>Shopping Cart
+				<b>({{ numberItems }})</b>
+			</router-link>
+		</li>
+		<li v-if="!user">
+			<router-link :to="{name: 'Login'}">Login</router-link>
+		</li>
+		<li v-if="!user">
+			<router-link :to="{name: 'Signup'}">Signup</router-link>
+		</li>
+		<li v-if="user">Hi {{user.displayName}}</li>
+		<li v-if="user"><a @click="logout">Logout</a></li>
+	</ul>
+</nav>
+<!-- het thanh dau tien  -->
+
+<!-- ---------------------------------------------------------------------------- -->
+
+
+<!-- nhap login geo  -->
+<div class="login container ">
+	<form @submit.prevent="login" class="card-panel">
+		<h2 class="center light-blue-text accent-3">Login</h2>
+		<div class="field">
+			<label for="email">Email:</label>
+			<input type="email" name="email" v-model="email" />
+		</div>
+		<!-- het div field  -->
+		<div class="field">
+			<label for="password">Password:</label>
+			<input type="password" name="password" v-model="password" />
+		</div>
+		<!-- het div field  -->
+		<p class="red-text center" v-if="feedback">{{ feedback }}</p>
+		<div class="field">
+			<button class="btn light-blue accent-3">Login</button>
+		</div>
+		<!-- het div field  -->
+	</form>
+	<!-- het form card-panel  -->
+</div>
+
+
+
+<!-- ----------------------------------------------------------------------------- -->
